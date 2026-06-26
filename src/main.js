@@ -1,10 +1,21 @@
 import { API_KEY } from './config.js';
 
+const api = axios.create({
+  baseURL: 'https://api.themoviedb.org/3/',
+  headers: {
+    'Content-Type': 'application/json;charset=utf-8'
+  },
+  params: {
+    'api_key': API_KEY
+  }
+
+});
+
+
 async function getTrendingMoviesPreview() {
-  const res = await fetch(
-    'https://api.themoviedb.org/3/trending/movie/day?api_key=' + API_KEY
+  const { data } = await api(
+    'trending/movie/day'
   );
-  const data = await res.json();
 
   const movies = data.results;
 
@@ -30,10 +41,9 @@ async function getTrendingMoviesPreview() {
 }
 
 async function getCategoriesPreview() {
-  const res = await fetch(
-    'https://api.themoviedb.org/3/genre/movie/list?api_key=' + API_KEY
+  const { data } = await api(
+    'genre/movie/list'
   );
-  const data = await res.json();
 
   const categories = data.genres;
 
