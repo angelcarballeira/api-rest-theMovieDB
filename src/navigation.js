@@ -16,7 +16,15 @@ function navigator() {
   }
 }
 
-function homePage() { console.log('Home!!!') }
+function homePage() {
+  console.log('Home!!!')
+  headerSection.classList.remove('header-container--long')
+  headerSection.style.background = '';
+
+
+  getTrendingMoviesPreview();
+  getCategoriesPreview();
+}
 function trendingPage() { console.log('Trending!!!') }
 function searchPage() { console.log('Search!!!') }
 function movieDetailsPage() { console.log('Movie!!!') }
